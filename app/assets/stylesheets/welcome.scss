@@ -4,3 +4,20 @@
 h1 {
   color: red;
 }
+
+.social-btn {
+  position: absolute;
+  background: #3b5998;
+  bottom: 0;
+  width: 100px;
+  height: 50px;
+  border: 1px solid #3b6999;
+  text-align: center;
+  color: #fff;
+  padding: 15px 10px 10px 10px;
+  border-radius: 20px;
+}
+
+.social-btn:hover {
+  color: white;
+}
