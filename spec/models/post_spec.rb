@@ -73,5 +73,19 @@ RSpec.describe Post, type: :model do
         expect(post.rank).to eq (old_rank - 1)
       end
     end
+
+    describe "#create_vote callback" do
+      before do
+        @new_post = topic.posts.create!(title: title, body: body, user: user)
+      end
+
+      it "increases the number of votes by one after creating" do
+        expect(@new_post.votes.count).to eq 1
+      end
+
+      it "increases the number of up votes by one after creating" do
+        expect(@new_post.up_votes). to eq 1
+      end
+    end
   end
 end
