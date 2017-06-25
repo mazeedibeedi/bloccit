@@ -75,4 +75,14 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  describe "favorite_post callback" do
+    it "favorites a post after creating it" do
+      expect(post.favorites.last).not_to be_nil
+    end
+
+    it "increases favorite count by 1" do
+      expect(post.favorites.count).to eq(1)
+    end
+  end
 end
