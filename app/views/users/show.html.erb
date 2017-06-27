@@ -20,7 +20,10 @@
 </div>
 
 <h2>Posts</h2>
-<%= render @user.posts %>
+<%= render_posts(@posts) %>
 
 <h2>Comments</h2>
-<%= render @user.comments %>
+<%= render_comments(@user) %>
+
+<h2>Favorited Posts</h2>
+<%= render_posts(@favorite_posts, true) %>

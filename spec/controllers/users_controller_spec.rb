@@ -62,6 +62,9 @@ RSpec.describe UsersController, type: :controller do
 
   describe "not signed in" do
     let(:factory_user) { create(:user) }
+    let(:my_topic) { create(:topic) }
+    let(:my_post) { create(:post, topic: my_topic, user: factory_user) }
+
 
     before do
       post :create, user: new_user_attributes
@@ -80,6 +83,12 @@ RSpec.describe UsersController, type: :controller do
     it "assigns factory_user to @user" do
       get :show, {id: factory_user.id}
       expect(assigns(:user)).to eq(factory_user)
+    end
+
+    it "assigns the user's favorited posts in @favorite_posts" do
+      my_post.favorites.create(user: factory_user)
+      get :show, {id: factory_user.id}
+      expect(assigns(:favorite_posts).first).to eq(my_post)
     end
   end
 end
